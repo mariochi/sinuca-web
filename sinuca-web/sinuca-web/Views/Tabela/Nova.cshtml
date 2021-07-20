@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Criando Tabela";
+}
+
+<div>
+    <h2>Times</h2>
+    <div>
+        <a href="/tabela/index" class="btn">Voltar</a>
+    </div>
+    <form action="/tabela/criar" method="post">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" name="nome">
+        </div>
+        <div class="form-group">
+            <label for="premiacao">Descrição da Premiação:</label>
+            <input type="text" class="form-control" name="premiacao">
+        </div>
+        <div class="form-group">
+            <label for="pontuacao">Pontuação da Tabela:</label>
+            <input type="text" class="form-control" name="pontuacao">
+        </div>
+        <div class="form-group">
+            <label for="regra">Regra de Pontuação:</label>
+            <input type="text" class="form-control" name="regra">
+        </div>
+        <button type="submit" class="btn btn-defa ult">Submit</button>
+    </form>
+</div>

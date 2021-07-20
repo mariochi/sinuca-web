@@ -1,0 +1,50 @@
+﻿@{
+    Tabela tabela = ViewBag.Tabela;
+    List<Time> times = tabela.MeusTimes();
+    times.Sort();
+}
+<div>
+    <h3> Dados da Tabela</h3>
+    <div>
+        <div>
+            <p>Nome: @tabela.Nome</p>
+        </div>
+        <div>
+            <p>Prêmio: @tabela.PremiacaoDescrição</p>
+        </div>
+        <div>
+            <p>Pontuação: @tabela.Pontuacao</p>
+        </div>
+        <div>
+            <p>Descrição: @tabela.RegraDescricao</p>
+        </div>
+        @if (tabela.MeusTimes().Count > 0)
+        {
+            <table class="table">
+                <tr>
+                    <td>Nome</td>
+                    <td>1º Jogador</td>
+                    <td>2º Jogador</td>
+                    <td>Pontos</td>
+                    <td></td>
+                </tr>
+                
+                @foreach (Time t in times)
+                {
+                    <tr>
+                        <td>@t.Nome</td>
+                        <td>@t.Jogador1</td>
+                        <td>@t.Jogador2</td>
+                        <td>@t.pontos</td>
+                        <td> Adicionar Pontos </td>
+                    </tr>
+                }
+
+            </table>
+
+        }
+        <div>@Html.ActionLink("Novo Time", "NovoTime", new { id = tabela.ID }, null) </div>
+
+    </div>
+
+</div>

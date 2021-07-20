@@ -20,8 +20,9 @@ namespace sinuca_web.Controllers
             return View();
         }
 
-        public IActionResult Novo()
+        public IActionResult Novo(int TabelaID)
         {
+            
             return View();
         }
 

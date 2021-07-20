@@ -1,0 +1,26 @@
+﻿@{
+    List<Tabela> tabelas = ViewBag.Tabelas;
+    ViewData["Title"] = "Tabelas";
+}
+
+<div>
+    <h2>Tabelas</h2>
+    <div>
+        <a href="/tabela/nova" class="btn">Nova Tabela</a>
+    </div>
+    <table class="table">
+        
+        @foreach (var t in tabelas)
+         {
+            <tr>
+                <td>@t.Nome</td>
+                <td>@t.PremiacaoDescrição</td>
+                <td>@t.Pontuacao</td>
+                <td>@t.RegraDescricao</td>
+                <td>@Html.ActionLink("Exibir","Mostrar", new { id = t.ID }, null) 
+                                    | @Html.ActionLink("Novo Time", "NovoTime", new { id = t.ID }, null) </td>
+            </tr>
+         }
+
+    </table>
+</div>

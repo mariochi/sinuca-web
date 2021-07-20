@@ -1,14 +1,14 @@
 ﻿@{
-    List<Time> times = ViewBag.Times;
-    ViewData["Title"] = "Home Page";
+    int TabID = ViewBag.TabelaID;
+    ViewData["Title"] = "Criando Tabela";
 }
 
 <div>
     <h2>Times</h2>
     <div>
-        <a href="/time/index" class="btn">Voltar</a>
+        <a href="/tabela/index" class="btn">Voltar</a>
     </div>
-    <form action="/time/criar" method="post">
+    <form action="/tabela/criarTime" method="post">
         <div class="form-group">
             <label for="nome">Nome:</label>
             <input type="text" class="form-control" name="nome">
@@ -20,6 +20,9 @@
         <div class="form-group">
             <label for="jogador2">2º Jogador:</label>
             <input type="text" class="form-control" name="jogador2">
+        </div>
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="tabelaid" value="@TabID.ToString()">
         </div>
         <button type="submit" class="btn btn-defa ult">Submit</button>
     </form>

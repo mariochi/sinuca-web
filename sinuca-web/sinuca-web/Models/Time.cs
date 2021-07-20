@@ -6,7 +6,7 @@ using SQLite;
 
 namespace sinuca_web.Models
 {
-    public class Time
+    public class Time : IComparable
     {
         private static int counter;
         private static List<Time> TimesDisponiveis { get; set; }
@@ -15,6 +15,8 @@ namespace sinuca_web.Models
         public string Jogador1 { get; set; }
         public string Jogador2 { get; set; }
 
+        public int TabelaID { get; set; }
+        public int pontos { get; set; }
         public Time()
         {
             ID = -1;
@@ -36,6 +38,11 @@ namespace sinuca_web.Models
             return TimesDisponiveis;
         }
 
+        public List<Time> TimesDaTabela(int id)
+        {
+            List<Time> lt = TodosOsTimes().Where(t => t.TabelaID == id).ToList();
+            return lt;
+        }
         public void Save()
         {
             //TO DO
@@ -43,6 +50,7 @@ namespace sinuca_web.Models
             {
                 this.ID = counter;
                 counter++;
+                pontos = 0;
                 TodosOsTimes().Add(this);
             }
             else
@@ -51,8 +59,21 @@ namespace sinuca_web.Models
                 esse.Nome = Nome;
                 esse.Jogador1 = Jogador1;
                 esse.Jogador2 = Jogador2;
+                esse.pontos = pontos;
             }
             
+        }
+
+
+        public int CompareTo(object obj)
+        {
+            if (obj == null) return 1;
+
+            Time outroTime = obj as Time;
+            if (outroTime != null)
+                return pontos.CompareTo(outroTime.pontos);
+            else
+                throw new ArgumentException("Object is not a Temperature");
         }
     }
 }
