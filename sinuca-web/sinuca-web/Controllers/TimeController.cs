@@ -20,12 +20,6 @@ namespace sinuca_web.Controllers
             return View();
         }
 
-        public IActionResult Novo(int TabelaID)
-        {
-            
-            return View();
-        }
-
         [HttpPost]
         public void Criar()
         {
@@ -36,6 +30,13 @@ namespace sinuca_web.Controllers
             t.Jogador2 = Request.Form["jogador2"];
             t.Save();
             Response.Redirect("/time");
+        }
+        public IActionResult AdicionaTabela(int ID)
+        {
+            ViewBag.Tabelas = new Tabela().Tabelas();
+            ViewBag.id = ID;
+            return View();
+
         }
     }
 }

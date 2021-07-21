@@ -46,11 +46,13 @@ namespace sinuca_web
 
             app.UseAuthorization();
 
+            
             app.UseEndpoints(endpoints =>
             {
+                
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Tabela}/{action=Index}/{id?}");
             });
         }
     }

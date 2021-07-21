@@ -10,13 +10,13 @@ namespace sinuca_web.Models
     {
         private static int counter;
         private static List<Time> TimesDisponiveis { get; set; }
-        public int ID { get; set; }
+        public long ID { get; set; }
         public string Nome { get; set; }
         public string Jogador1 { get; set; }
         public string Jogador2 { get; set; }
 
-        public int TabelaID { get; set; }
-        public int pontos { get; set; }
+        public long TabelaID { get; set; }
+        public long pontos { get; set; }
         public Time()
         {
             ID = -1;
@@ -38,7 +38,7 @@ namespace sinuca_web.Models
             return TimesDisponiveis;
         }
 
-        public List<Time> TimesDaTabela(int id)
+        public List<Time> TimesDaTabela(long id)
         {
             List<Time> lt = TodosOsTimes().Where(t => t.TabelaID == id).ToList();
             return lt;

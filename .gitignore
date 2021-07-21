@@ -388,5 +388,5 @@ FodyWeavers.xsd
 *.sln.iml
 
 # SQLITE
-.sqbpro
-.sqlite
+*.sqbpro
+*.sqlite

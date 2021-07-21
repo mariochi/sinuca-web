@@ -1,6 +1,7 @@
 ﻿@{
     List<Time> times = ViewBag.Times;
     ViewData["Title"] = "Times";
+    Tabela tablename = new Tabela();
 }
 
 <div>
@@ -12,11 +13,23 @@
         
         @foreach (var t in times)
         {
-            <tr>
-                <td>@t.Nome</td>
-                <td>@t.Jogador1</td>
-                <td>@t.Jogador2</td>
-            </tr>
+        <tr>
+            <td>@t.Nome</td>
+            <td>@t.Jogador1</td>
+            <td>@t.Jogador2</td>
+            @if (t.TabelaID != -1)
+            {
+                
+                <td>@tablename.PorID(t.TabelaID).Nome</td>
+            }
+            else
+            {
+                <td>
+                    Sem time.
+                </td>
+            };
+
+        </tr>
         }
 
     </table>
