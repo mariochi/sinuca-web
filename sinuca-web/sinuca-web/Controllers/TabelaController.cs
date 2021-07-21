@@ -31,14 +31,14 @@ namespace sinuca_web.Controllers
             Response.Redirect("/tabela");
         }
 
-        public IActionResult Mostrar(int ID)
+        public IActionResult Mostrar(long ID)
         {
             Tabela t = new Tabela().PorID(ID);
             ViewBag.Tabela = t;
             return View();
 
         }
-        public IActionResult NovoTime(int id)
+        public IActionResult NovoTime(long id)
         {
             ViewBag.TabelaID = id;
             return View();
@@ -46,7 +46,7 @@ namespace sinuca_web.Controllers
         [HttpPost]
         public void CriarTime()
         {
-            Tabela tb = new Tabela().PorID(int.Parse(Request.Form["tabelaid"]));
+            Tabela tb = new Tabela().PorID(long.Parse(Request.Form["tabelaid"]));
             if(tb.MeusTimes().Count >= Tabela.MAX_TIMES_POR_TABELA)
             {
                 ViewBag.Message = "Tabela cheia";

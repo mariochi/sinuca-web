@@ -10,8 +10,6 @@ namespace sinuca_web.Models
 {
     public class Tabela
     {
-        private static List<Tabela> tabelas;
-        private static int counter;
         public const int MAX_TIMES_POR_TABELA = 10;
         public long ID { get; set; }
         public string Nome { get; set; }
@@ -24,51 +22,26 @@ namespace sinuca_web.Models
         {
             ID = -1;
         }
-
         public List<Time> MeusTimes()
         {
             return new Time().TimesDaTabela(ID);
-
         }
         public bool Cheia()
         {
             return MeusTimes().Count >= 10;
         }
-        
         public List<Tabela> Tabelas()
         {
-            /*if(tabelas == null)
-            {
-                tabelas = new List<Tabela>();
-                tabelas.Add(new Tabela { ID = 1, Nome = "Time Teste", PremiacaoDescrição = "Uma vaga de emprego", Pontuacao = 200, RegraDescricao = "Não Sei" });
-                counter = 2;
-                tabelas = DataCenter.GetTabelas();
-            }
-            return tabelas;*/
             return DataCenter.GetTabelas();
         }
         public Tabela PorID(long ID)
         {
-            Tabela t = new Tabela().Tabelas().Where(tab => tab.ID == ID).First();
+            Tabela t = DataCenter.TabelaPorId(ID);
             return t;
         }
         public void Save()
         {
             DataCenter.SaveTabela(this);
-            /*if (ID == -1)
-            {
-                ID = counter;
-                counter++;
-                Tabelas().Add(this);
-            }
-            else
-            {
-                Tabela tab = Tabelas().Where(t => t.ID == ID).First();
-                tab.Nome = Nome;
-                tab.PremiacaoDescrição = PremiacaoDescrição;
-                tab.Pontuacao = Pontuacao;
-                tab.RegraDescricao = RegraDescricao;
-            }*/
         }
     }
 }

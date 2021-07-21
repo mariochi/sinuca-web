@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SQLite;
+using sinuca_web.Database;
 
 namespace sinuca_web.Models
 {
     public class Time : IComparable
     {
-        private static int counter;
-        private static List<Time> TimesDisponiveis { get; set; }
         public long ID { get; set; }
         public string Nome { get; set; }
         public string Jogador1 { get; set; }
@@ -23,7 +21,7 @@ namespace sinuca_web.Models
         }
         public List<Time> TodosOsTimes()
         {
-            if(TimesDisponiveis ==  null)
+            /*if(TimesDisponiveis ==  null)
             {
                 TimesDisponiveis = new List<Time>();
                 TimesDisponiveis.Add(new Time { ID = 1, Nome = "A", Jogador1 = "AA", Jogador2 = "BB" });
@@ -36,6 +34,9 @@ namespace sinuca_web.Models
                 counter = 8;
             }
             return TimesDisponiveis;
+            */
+
+            return DataCenter.GetTimes();
         }
 
         public List<Time> TimesDaTabela(long id)
@@ -45,7 +46,7 @@ namespace sinuca_web.Models
         }
         public void Save()
         {
-            //TO DO
+            /*
             if (ID == -1)
             {
                 this.ID = counter;
@@ -61,7 +62,8 @@ namespace sinuca_web.Models
                 esse.Jogador2 = Jogador2;
                 esse.pontos = pontos;
             }
-            
+            */
+            DataCenter.SaveTime(this);
         }
 
 

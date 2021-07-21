@@ -6,9 +6,6 @@
 
 <div>
     <h2>Times</h2>
-    <div>
-        <a href="/time/novo" class="btn">Novo Time</a>
-    </div>
     <table class="table">
         
         @foreach (var t in times)
@@ -17,18 +14,11 @@
             <td>@t.Nome</td>
             <td>@t.Jogador1</td>
             <td>@t.Jogador2</td>
-            @if (t.TabelaID != -1)
+            @if (t.TabelaID != -1 && t.TabelaID != 0)
             {
                 
                 <td>@tablename.PorID(t.TabelaID).Nome</td>
             }
-            else
-            {
-                <td>
-                    Sem time.
-                </td>
-            };
-
         </tr>
         }
 
